@@ -18,5 +18,7 @@ namespace Autos.Entities
 
         [StringLength(50)]
         public string Descripcion { get; set; }
+
+        public virtual ICollection<Vendedor> Vendedores { get; set; }
     }
 }

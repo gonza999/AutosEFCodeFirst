@@ -16,7 +16,11 @@ namespace Autos.Entities
         [StringLength(255)]
         public string Telefono { get; set; }
 
-        [StringLength(255)]
-        public string Categoria { get; set; }
+        //[StringLength(255)]
+        //public string Categoria { get; set; }
+
+        [Required]
+        public int CategoriaDeVendedorId { get; set; }
+        public virtual CategoriaDeVendedor CategoriaDeVendedor { get; set; }
     }
 }

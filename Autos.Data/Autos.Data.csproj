@@ -66,6 +66,14 @@
     <Compile Include="Migrations\202106262158495_InsertIntoCategoriasDeVendedores.designer.cs">
       <DependentUpon>202106262158495_InsertIntoCategoriasDeVendedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106262228272_CreateRelationBetweenVendedoresAndCategorias.cs" />
+    <Compile Include="Migrations\202106262228272_CreateRelationBetweenVendedoresAndCategorias.designer.cs">
+      <DependentUpon>202106262228272_CreateRelationBetweenVendedoresAndCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106262240259_RemoveColumnCategoria.cs" />
+    <Compile Include="Migrations\202106262240259_RemoveColumnCategoria.designer.cs">
+      <DependentUpon>202106262240259_RemoveColumnCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +95,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106262158495_InsertIntoCategoriasDeVendedores.resx">
       <DependentUpon>202106262158495_InsertIntoCategoriasDeVendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106262228272_CreateRelationBetweenVendedoresAndCategorias.resx">
+      <DependentUpon>202106262228272_CreateRelationBetweenVendedoresAndCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106262240259_RemoveColumnCategoria.resx">
+      <DependentUpon>202106262240259_RemoveColumnCategoria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

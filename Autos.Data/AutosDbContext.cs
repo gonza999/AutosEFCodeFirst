@@ -17,7 +17,7 @@ namespace Autos.Data
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Localidad> Localidades { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
-        public virtual DbSet<PaisDeOrigen> PaisesDeOrigens { get; set; }
+        public virtual DbSet<PaisDeOrigen> PaisesDeOrigen { get; set; }
         public virtual DbSet<Provincia> Provincias { get; set; }
         public virtual DbSet<SituacionIva> SituacionesIvas { get; set; }
         public virtual DbSet<Sucursal> Sucursales { get; set; }
