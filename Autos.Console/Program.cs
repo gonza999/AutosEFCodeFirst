@@ -19,7 +19,26 @@ namespace Autos.Console
             //AddSucursales();
             //SetSucursalIdEnVentas();
             //SetPaisDeOrigenIdEnAutos();
+            SetLocalidadIdYProvinciaIdEnClientes();
             System.Console.ReadLine();
+        }
+
+        private static void SetLocalidadIdYProvinciaIdEnClientes()
+        {
+            using (var context=new AutosDbContext())
+            {
+                var clientes = context.Clientes.ToList();
+                foreach (var c in clientes)
+                {
+                    var loc = c.Localidad;
+                    var localidad = context.Localidades.FirstOrDefault(l => l.Nombre == loc);
+                    c.LocalidadId = localidad.LocalidadId;
+                    c.ProvinciaId = localidad.ProvinciaId;
+                }
+
+                context.SaveChanges();
+                System.Console.WriteLine("Relaciones actualizadas");
+            }
         }
 
         private static void SetPaisDeOrigenIdEnAutos()

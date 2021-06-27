@@ -94,6 +94,18 @@
     <Compile Include="Migrations\202106270014591_CreateRelationBetweenAutosAndPaises.designer.cs">
       <DependentUpon>202106270014591_CreateRelationBetweenAutosAndPaises.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106270022414_RemoveColumnLocalidadInClientes.cs" />
+    <Compile Include="Migrations\202106270022414_RemoveColumnLocalidadInClientes.designer.cs">
+      <DependentUpon>202106270022414_RemoveColumnLocalidadInClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106270025579_RemoveOneToManyCascadeDeleteConvention.cs" />
+    <Compile Include="Migrations\202106270025579_RemoveOneToManyCascadeDeleteConvention.designer.cs">
+      <DependentUpon>202106270025579_RemoveOneToManyCascadeDeleteConvention.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.cs" />
+    <Compile Include="Migrations\202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.designer.cs">
+      <DependentUpon>202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -136,6 +148,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106270014591_CreateRelationBetweenAutosAndPaises.resx">
       <DependentUpon>202106270014591_CreateRelationBetweenAutosAndPaises.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106270022414_RemoveColumnLocalidadInClientes.resx">
+      <DependentUpon>202106270022414_RemoveColumnLocalidadInClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106270025579_RemoveOneToManyCascadeDeleteConvention.resx">
+      <DependentUpon>202106270025579_RemoveOneToManyCascadeDeleteConvention.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.resx">
+      <DependentUpon>202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

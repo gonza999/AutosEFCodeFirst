@@ -2,6 +2,7 @@ using Autos.Entities;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 
 namespace Autos.Data
@@ -29,6 +30,8 @@ namespace Autos.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
             modelBuilder.Entity<Auto>()
                 .Property(e => e.Modelo)
                 .IsUnicode(false);

@@ -15,8 +15,8 @@ namespace Autos.Entities
         [StringLength(255)]
         public string Dirección { get; set; }
 
-        [StringLength(255)]
-        public string Localidad { get; set; }
+        //[StringLength(255)]
+        //public string Localidad { get; set; }
 
         [StringLength(255)]
         public string Teléfono { get; set; }
@@ -24,10 +24,15 @@ namespace Autos.Entities
         [StringLength(255)]
         public string Sexo { get; set; }
 
+        [Required]
         public int? ProvinciaId { get; set; }
 
+        [Required]
         public int? LocalidadId { get; set; }
 
         public int? SituacionIvaId { get; set; }
+
+        public virtual Provincia Provincia { get; set; }
+        public virtual Localidad Localidad { get; set; }
     }
 }
