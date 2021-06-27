@@ -23,8 +23,14 @@ namespace Autos.Entities
         [Column(TypeName = "money")]
         public decimal Monto { get; set; }
 
+        public decimal Comision { get; set; }
+
         public int? AutoId { get; set; }
 
+        [Required]
         public int? SucursalId { get; set; }
+
+        public virtual Sucursal Sucursal { get; set; }
+
     }
 }

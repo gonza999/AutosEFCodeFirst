@@ -21,6 +21,7 @@ namespace Autos.Entities
 
         [Required]
         public int CategoriaDeVendedorId { get; set; }
+
         public virtual CategoriaDeVendedor CategoriaDeVendedor { get; set; }
     }
 }

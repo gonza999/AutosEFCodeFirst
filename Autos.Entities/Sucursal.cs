@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -40,5 +41,7 @@ namespace Autos.Entities
 
         [StringLength(120)]
         public string CorreoElectronico { get; set; }
+
+        public virtual ICollection<Venta> Ventas { get; set; }
     }
 }
