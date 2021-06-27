@@ -16,14 +16,19 @@ namespace Autos.Entities
 
         public decimal PrecioFinal { get; set; }
 
+        //[Required]
+        //[StringLength(50)]
+        //public string PaisDeOrigen { get; set; }
+
         [Required]
-        [StringLength(50)]
-        public string PaisDeOrigen { get; set; }
+        public int PaisDeOrigenId { get; set; }
 
         public int TipoDeVehiculoId { get; set; }
 
         public virtual Marca Marca { get; set; }
 
         public virtual TipoDeVehiculo TipoDeVehiculo { get; set; }
+
+        public virtual PaisDeOrigen PaisDeOrigen { get; set; }
     }
 }

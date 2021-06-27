@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,5 +13,7 @@ namespace Autos.Entities
         [Required]
         [StringLength(100)]
         public string NombrePais { get; set; }
+
+        public virtual ICollection<Auto> Autos { get; set; }
     }
 }

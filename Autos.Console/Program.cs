@@ -18,8 +18,27 @@ namespace Autos.Console
             //SetCominsionEnVentas();
             //AddSucursales();
             //SetSucursalIdEnVentas();
-
+            //SetPaisDeOrigenIdEnAutos();
             System.Console.ReadLine();
+        }
+
+        private static void SetPaisDeOrigenIdEnAutos()
+        {
+            using (var context = new AutosDbContext())
+            {
+                var paises = context.PaisesDeOrigen.ToList();
+                var autos = context.Autos.ToList();
+                Random r = new Random();
+                foreach (var a in autos)
+                {
+                    int posicion = r.Next(paises.Count());
+                    var pais = paises[posicion];
+                    a.PaisDeOrigenId = pais.PaisDeOrigenId;
+                }
+
+                context.SaveChanges();
+                System.Console.WriteLine("Cambios completados!");
+            }
         }
 
         private static void SetSucursalIdEnVentas()

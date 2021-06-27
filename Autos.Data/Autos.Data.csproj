@@ -82,6 +82,18 @@
     <Compile Include="Migrations\202106262358373_CreateRelationBetweenSucursalesAndVentas.designer.cs">
       <DependentUpon>202106262358373_CreateRelationBetweenSucursalesAndVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106270005470_AddNewColumnPaisDeOrigenIdInAutos.cs" />
+    <Compile Include="Migrations\202106270005470_AddNewColumnPaisDeOrigenIdInAutos.designer.cs">
+      <DependentUpon>202106270005470_AddNewColumnPaisDeOrigenIdInAutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106270012279_RemoveColumnPaisDeOrigenInAutos.cs" />
+    <Compile Include="Migrations\202106270012279_RemoveColumnPaisDeOrigenInAutos.designer.cs">
+      <DependentUpon>202106270012279_RemoveColumnPaisDeOrigenInAutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106270014591_CreateRelationBetweenAutosAndPaises.cs" />
+    <Compile Include="Migrations\202106270014591_CreateRelationBetweenAutosAndPaises.designer.cs">
+      <DependentUpon>202106270014591_CreateRelationBetweenAutosAndPaises.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +127,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106262358373_CreateRelationBetweenSucursalesAndVentas.resx">
       <DependentUpon>202106262358373_CreateRelationBetweenSucursalesAndVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106270005470_AddNewColumnPaisDeOrigenIdInAutos.resx">
+      <DependentUpon>202106270005470_AddNewColumnPaisDeOrigenIdInAutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106270012279_RemoveColumnPaisDeOrigenInAutos.resx">
+      <DependentUpon>202106270012279_RemoveColumnPaisDeOrigenInAutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106270014591_CreateRelationBetweenAutosAndPaises.resx">
+      <DependentUpon>202106270014591_CreateRelationBetweenAutosAndPaises.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
