@@ -19,27 +19,70 @@ namespace Autos.Console
             //AddSucursales();
             //SetSucursalIdEnVentas();
             //SetPaisDeOrigenIdEnAutos();
-            SetLocalidadIdYProvinciaIdEnClientes();
+            //SetLocalidadIdYProvinciaIdEnClientes();
+            //AddSituacionesIva();
+            //SetSituacionesIdEnClientes();
             System.Console.ReadLine();
         }
 
-        private static void SetLocalidadIdYProvinciaIdEnClientes()
+        private static void SetSituacionesIdEnClientes()
         {
-            using (var context=new AutosDbContext())
+            using (var context = new AutosDbContext())
             {
+                var situacionesIva = context.SituacionesIvas.ToList();
                 var clientes = context.Clientes.ToList();
+                Random r = new Random();
                 foreach (var c in clientes)
                 {
-                    var loc = c.Localidad;
-                    var localidad = context.Localidades.FirstOrDefault(l => l.Nombre == loc);
-                    c.LocalidadId = localidad.LocalidadId;
-                    c.ProvinciaId = localidad.ProvinciaId;
+                    int posicion = r.Next(situacionesIva.Count());
+                    var situacionIva = situacionesIva[posicion];
+                    c.SituacionIvaId = situacionIva.SituacionIvaId;
                 }
 
                 context.SaveChanges();
-                System.Console.WriteLine("Relaciones actualizadas");
+                System.Console.WriteLine("Cambios completados!");
             }
         }
+
+        private static void AddSituacionesIva()
+        {
+            using (var context=new AutosDbContext())
+            {
+                SituacionIva situacionIva1 = new SituacionIva()
+                {
+                    Descripcion = "Responsable Inscripto"
+                };
+                SituacionIva situacionIva2 = new SituacionIva()
+                {
+                    Descripcion = "Consumidor Final"
+                };
+                SituacionIva situacionIva3 = new SituacionIva()
+                {
+                    Descripcion = "Excentos"
+                };
+                context.SituacionesIvas.AddRange(new List<SituacionIva>(){situacionIva1,situacionIva2,situacionIva3});
+                context.SaveChanges();
+                System.Console.WriteLine("Situaciones de Iva agregadas");
+            }
+        }
+
+        //private static void SetLocalidadIdYProvinciaIdEnClientes()
+        //{
+        //    using (var context=new AutosDbContext())
+        //    {
+        //        var clientes = context.Clientes.ToList();
+        //        foreach (var c in clientes)
+        //        {
+        //            var loc = c.Localidad;
+        //            var localidad = context.Localidades.FirstOrDefault(l => l.Nombre == loc);
+        //            c.LocalidadId = localidad.LocalidadId;
+        //            c.ProvinciaId = localidad.ProvinciaId;
+        //        }
+
+        //        context.SaveChanges();
+        //        System.Console.WriteLine("Relaciones actualizadas");
+        //    }
+        //}
 
         private static void SetPaisDeOrigenIdEnAutos()
         {

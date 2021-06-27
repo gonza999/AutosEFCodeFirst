@@ -25,14 +25,17 @@ namespace Autos.Entities
         public string Sexo { get; set; }
 
         [Required]
-        public int? ProvinciaId { get; set; }
+        public int ProvinciaId { get; set; }
 
         [Required]
-        public int? LocalidadId { get; set; }
+        public int LocalidadId { get; set; }
 
-        public int? SituacionIvaId { get; set; }
+        [Required]
+        public int SituacionIvaId { get; set; }
 
         public virtual Provincia Provincia { get; set; }
         public virtual Localidad Localidad { get; set; }
+
+        public virtual SituacionIva SituacionIva { get; set; }
     }
 }

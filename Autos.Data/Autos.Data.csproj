@@ -106,6 +106,10 @@
     <Compile Include="Migrations\202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.designer.cs">
       <DependentUpon>202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106271910527_CreateRalationBetweenClientesAndSituacionesIva.cs" />
+    <Compile Include="Migrations\202106271910527_CreateRalationBetweenClientesAndSituacionesIva.designer.cs">
+      <DependentUpon>202106271910527_CreateRalationBetweenClientesAndSituacionesIva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.resx">
       <DependentUpon>202106270030446_CreateRalationBetweenClientesAndProvinciasAndLocalidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106271910527_CreateRalationBetweenClientesAndSituacionesIva.resx">
+      <DependentUpon>202106271910527_CreateRalationBetweenClientesAndSituacionesIva.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
