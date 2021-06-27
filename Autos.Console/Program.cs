@@ -22,7 +22,94 @@ namespace Autos.Console
             //SetLocalidadIdYProvinciaIdEnClientes();
             //AddSituacionesIva();
             //SetSituacionesIdEnClientes();
+            //ListarAutosFiltradosPorMarca();
+            //ListarLos3AutosMasCarosFiltradosPorPais();
+            //ListarLasComisionesPorVendedor();
             System.Console.ReadLine();
+        }
+
+        private static void ListarLasComisionesPorVendedor()
+        {
+            using (var context = new AutosDbContext())
+            {
+                decimal comision = 0;
+                var vendedores = context.Vendedores.ToList();
+                foreach (var vendedor in vendedores)
+                {
+                    System.Console.WriteLine($"\nVendedor:{vendedor.NombreyApellido}" +
+                                             $"\nCantidad de Ventas: {vendedor.Ventas.Count}");
+                    
+                    foreach (var venta in vendedor.Ventas)
+                    {
+                        System.Console.WriteLine($"\nMarca :{venta.Auto.Marca.NombreMarca}" +
+                                                 $"\nModelo: {venta.Auto.Modelo}" +
+                                                 $"\nComision:{venta.Comision}\n");
+                        
+                    }
+
+                    comision = vendedor.Ventas.Sum(v => v.Comision);
+                    System.Console.WriteLine($"\nComision Total: {comision}");
+                }
+            }
+        }
+
+        private static void ListarLos3AutosMasCarosFiltradosPorPais()
+        {
+            using (var context = new AutosDbContext())
+            {
+                bool repetir = false;
+                do
+                {
+                    System.Console.WriteLine("Ingrese pais del auto :");
+                    string pais = System.Console.ReadLine();
+                    var autos = context.Autos.ToList().Where(a => a.PaisDeOrigen.NombrePais == pais).OrderByDescending(a=>a.PrecioFinal).Take(3);
+                    if (autos.Count() > 0)
+                    {
+                        foreach (var a in autos)
+                        {
+                            System.Console.WriteLine($"\nMarca :{a.Marca.NombreMarca}\nModelo: {a.Modelo}\nPrecio:{a.PrecioFinal}\n");
+                        }
+
+                        repetir = false;
+                    }
+                    else
+                    {
+                        System.Console.Clear();
+                        System.Console.WriteLine("Vuelva a ingresar un pais");
+                        repetir = true;
+                    }
+                } while (repetir);
+            }
+        }
+
+        private static void ListarAutosFiltradosPorMarca()
+        {
+            using (var context=new AutosDbContext())
+            {
+                bool repetir = false;
+                do
+                {
+                    System.Console.WriteLine("Ingrese marca del auto :");
+                    string marca = System.Console.ReadLine();
+                    var autos = context.Autos.ToList().Where(a => a.Marca.NombreMarca == marca);
+                    if (autos.Count() > 0)
+                    {
+                        foreach (var a in autos)
+                        {
+                            System.Console.WriteLine($"\nMarca :{a.Marca.NombreMarca}\nModelo: {a.Modelo}\nPais:{a.PaisDeOrigen.NombrePais}" +
+                                                     $"\nTipo:{a.TipoDeVehiculo.Descripcion}\nPrecio:{a.PrecioFinal}\n");
+                        }
+
+                        repetir = false;
+                    }
+                    else
+                    {
+                        System.Console.Clear();
+                        System.Console.WriteLine("Vuelva a ingresar una marca");
+                        repetir = true;
+                    } 
+                } while (repetir);
+            }
         }
 
         private static void SetSituacionesIdEnClientes()

@@ -14,8 +14,10 @@ namespace Autos.Entities
         [StringLength(255)]
         public string Patente { get; set; }
 
+        [Required]
         public int ClienteId { get; set; }
 
+        [Required]
         public int VendedorId { get; set; }
 
         public DateTime FechaOperación { get; set; }
@@ -25,12 +27,17 @@ namespace Autos.Entities
 
         public decimal Comision { get; set; }
 
-        public int? AutoId { get; set; }
+        [Required]
+        public int AutoId { get; set; }
 
         [Required]
-        public int? SucursalId { get; set; }
+        public int SucursalId { get; set; }
 
         public virtual Sucursal Sucursal { get; set; }
+        public virtual Vendedor Vendedor { get; set; }
+        public virtual Cliente Cliente { get; set; }
+
+        public virtual Auto Auto { get; set; }
 
     }
 }

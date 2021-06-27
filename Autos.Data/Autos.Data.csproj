@@ -110,6 +110,14 @@
     <Compile Include="Migrations\202106271910527_CreateRalationBetweenClientesAndSituacionesIva.designer.cs">
       <DependentUpon>202106271910527_CreateRalationBetweenClientesAndSituacionesIva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106271936170_CreateRelationBetweenVentasAndVendedoresAndClientes.cs" />
+    <Compile Include="Migrations\202106271936170_CreateRelationBetweenVentasAndVendedoresAndClientes.designer.cs">
+      <DependentUpon>202106271936170_CreateRelationBetweenVentasAndVendedoresAndClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106271944136_CreateRelationBetweenAutosAndVentas.cs" />
+    <Compile Include="Migrations\202106271944136_CreateRelationBetweenAutosAndVentas.designer.cs">
+      <DependentUpon>202106271944136_CreateRelationBetweenAutosAndVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,6 +172,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106271910527_CreateRalationBetweenClientesAndSituacionesIva.resx">
       <DependentUpon>202106271910527_CreateRalationBetweenClientesAndSituacionesIva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106271936170_CreateRelationBetweenVentasAndVendedoresAndClientes.resx">
+      <DependentUpon>202106271936170_CreateRelationBetweenVentasAndVendedoresAndClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106271944136_CreateRelationBetweenAutosAndVentas.resx">
+      <DependentUpon>202106271944136_CreateRelationBetweenAutosAndVentas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

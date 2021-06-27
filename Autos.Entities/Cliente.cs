@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,5 +38,7 @@ namespace Autos.Entities
         public virtual Localidad Localidad { get; set; }
 
         public virtual SituacionIva SituacionIva { get; set; }
+
+        public virtual ICollection<Venta> Ventas { get; set; }
     }
 }

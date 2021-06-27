@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,5 +24,7 @@ namespace Autos.Entities
         public int CategoriaDeVendedorId { get; set; }
 
         public virtual CategoriaDeVendedor CategoriaDeVendedor { get; set; }
+
+        public virtual ICollection<Venta> Ventas { get; set; }
     }
 }

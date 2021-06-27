@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,5 +31,7 @@ namespace Autos.Entities
         public virtual TipoDeVehiculo TipoDeVehiculo { get; set; }
 
         public virtual PaisDeOrigen PaisDeOrigen { get; set; }
+
+        public virtual ICollection<Venta> Ventas { get; set; }
     }
 }
