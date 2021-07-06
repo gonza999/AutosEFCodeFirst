@@ -1,6 +1,7 @@
 ﻿using Autos.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,136 @@ namespace Autos.Console
             //ListarAutosFiltradosPorMarca();
             //ListarLos3AutosMasCarosFiltradosPorPais();
             //ListarLasComisionesPorVendedor();
+            //AgruparVentasPorMarca();
+            //AgruparVentasPorVendedor();
+            //ListarConObjetosAnonimos();
+            //AgruparVentasPorMarcaVentasInferioresA3();
+            //Listar5AutosMasCarosDespuesDeLos10MasCaros();
             System.Console.ReadLine();
+        }
+
+        private static void Listar5AutosMasCarosDespuesDeLos10MasCaros()
+        {
+            using (var context=new AutosDbContext())
+            {
+                var autos = context.Autos
+                    .OrderByDescending(a => a.PrecioFinal)
+                    .Skip(10)
+                    .Take(5)
+                    .AsNoTracking()
+                    .ToList();
+                foreach (var a in autos)
+                {
+                    System.Console
+                        .WriteLine($"\nMarca :{a.Marca.NombreMarca}" +
+                                   $"\nModelo: {a.Modelo}" +
+                                   $"\nPais:{a.PaisDeOrigen.NombrePais}" +
+                                   $"\nTipo:{a.TipoDeVehiculo.Descripcion}" +
+                                   $"\nPrecio:{a.PrecioFinal}\n");
+
+                }
+            }
+        }
+
+        private static void AgruparVentasPorMarcaVentasInferioresA3()
+        {
+            using (var context = new AutosDbContext())
+            {
+                var grupo = context.Ventas
+                    .GroupBy(v => v.Auto.Marca)
+                    .OrderByDescending(v => v.Count())
+                    .ToList();
+                foreach (var g in grupo)
+                {
+                    var cantidad = g.Count();
+                    if (cantidad<3)
+                    {
+                        var marca = context.Marcas.SingleOrDefault(m => m.MarcaId == g.Key.MarcaId);
+                        System.Console.WriteLine($"Marca : {marca.NombreMarca}");
+                        System.Console.WriteLine($"Cantidad de venta : {cantidad}\n");
+                        foreach (var v in g)
+                        {
+                            System.Console.WriteLine($"Modelo : {v.Auto.Modelo} Monto : {v.Monto} ");
+                        }
+
+                        System.Console.WriteLine($"\nRecaudado : {g.Sum(v => v.Monto)}\n");
+
+                    } }
+            }
+        }
+
+        private static void ListarConObjetosAnonimos()
+        {
+            using (var context=new AutosDbContext())
+            {
+                var lista = context.Ventas
+                    .Select(item => new
+                {
+                    Marca = item.Auto.Marca.NombreMarca,
+                    Modelo = item.Auto.Modelo,
+                    Vendedor = item.Vendedor.NombreyApellido,
+                    Precio = item.Monto,
+                    Fecha = item.FechaOperación
+                });
+                foreach (var item in lista)
+                {
+                    System.Console.WriteLine($"Marca : {item.Marca} " +
+                                             $"Modelo : {item.Modelo} " +
+                                             $"Vendedor : {item.Vendedor} " +
+                                             $"Precio : {item.Precio} " +
+                                             $"Fecha : {item.Fecha}");
+                }
+            }
+        }
+
+        private static void AgruparVentasPorVendedor()
+        {
+            using (var context = new AutosDbContext())
+            {
+                var grupo = context.Ventas
+                    .GroupBy(v => v.Vendedor)
+                    .OrderBy(v => v.Count())
+                    .ToList();
+                foreach (var g in grupo)
+                {
+                    var ventas = g.Count();
+                    if (ventas>2)
+                    {
+                        var vendedor = context.Vendedores.SingleOrDefault(v => v.VendedorId == g.Key.VendedorId);
+                        System.Console.WriteLine($"Vendedor : {vendedor.NombreyApellido}");
+                        foreach (var v in g)
+                        {
+                            System.Console.WriteLine($"Modelo : {v.Auto.Modelo} ");
+                        }
+
+                        System.Console.WriteLine($"\nMonto : {g.Sum(v => v.Monto)}" +
+                                                 $" Comision : {g.Sum(v => v.Comision)}\n");
+
+                    } }
+            }
+        }
+
+        private static void AgruparVentasPorMarca()
+        {
+            using (var context=new AutosDbContext())
+            {
+                var grupo = context.Ventas
+                    .GroupBy(v => v.Auto.Marca)
+                    .OrderByDescending(v=>v.Count())
+                    .ToList();
+                foreach (var g in grupo)
+                {
+                    var marca = context.Marcas.SingleOrDefault(m => m.MarcaId == g.Key.MarcaId);
+                    System.Console.WriteLine($"Marca : {marca.NombreMarca}");
+                    System.Console.WriteLine($"Cantidad de venta : {g.Count()}\n");
+                    foreach (var v in g)
+                    {
+                        System.Console.WriteLine($"Modelo : {v.Auto.Modelo} ");
+                    }
+
+                    System.Console.WriteLine($"\nRecaudado : {g.Sum(v=>v.Monto)}\n");
+                }
+            }
         }
 
         private static void ListarLasComisionesPorVendedor()
